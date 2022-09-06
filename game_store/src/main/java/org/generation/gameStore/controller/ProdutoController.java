@@ -2,8 +2,8 @@ package org.generation.gameStore.controller;
 
 import java.util.List;
 
-import org.generation.gameStore.model.Jogo;
-import org.generation.gameStore.repository.JogoRepository;
+import org.generation.gameStore.model.Produto;
+import org.generation.gameStore.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,34 +20,34 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping
 @CrossOrigin(origins = "*")
-public class JogoController {
+public class ProdutoController {
 	
 	@Autowired
-	private JogoRepository repository;
+	private ProdutoRepository repository;
 	
 	@GetMapping
-	public ResponseEntity<List<Jogo>> getAll(){
+	public ResponseEntity<List<Produto>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Jogo> getById(@PathVariable Long id){
+	public ResponseEntity<Produto> getById(@PathVariable Long id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Jogo>> getByNome(@PathVariable String nome){
+	public ResponseEntity<List<Produto>> getByNome(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Jogo> post(@RequestBody Jogo jogo){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(jogo));
+	public ResponseEntity<Produto> post(@RequestBody Produto produto){
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produto));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Jogo> put(@RequestBody Jogo jogo){
-		return ResponseEntity.ok(repository.save(jogo));
+	public ResponseEntity<Produto> put(@RequestBody Produto produto){
+		return ResponseEntity.ok(repository.save(produto));
 	}
 	
 	@DeleteMapping("/{id}")

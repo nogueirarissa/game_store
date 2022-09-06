@@ -29,14 +29,14 @@ public class Categoria {
 	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
-	private List <Jogo> jogo;
+	private List <Produto> produto;
 
-	public List<Jogo> getJogo() {
-		return jogo;
+	public List<Produto> getJogo() {
+		return produto;
 	}
 
-	public void setJogo(List<Jogo> jogo) {
-		this.jogo = jogo;
+	public void setJogo(List<Produto> produto) {
+		this.produto = produto;
 	}
 
 	public Long getId() {

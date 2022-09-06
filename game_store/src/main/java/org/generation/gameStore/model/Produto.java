@@ -11,8 +11,8 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tb_jogos")
-public class Jogo {
+@Table(name = "tb_produtos")
+public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Jogo {
 	private int preço;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("jogo")
+	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
 
 	public Categoria getCategoria() {
