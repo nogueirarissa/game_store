@@ -1,5 +1,7 @@
 package org.generation.gameStore.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +24,7 @@ public class Produto {
 	private String nome;
 	
 	@NotNull
-	private int preço;
+	private BigDecimal preço;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
@@ -52,11 +54,11 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public int getPreço() {
+	public BigDecimal getPreço() {
 		return preço;
 	}
 
-	public void setPreço(int preço) {
+	public void setPreço(BigDecimal preço) {
 		this.preço = preço;
 	}
 	
